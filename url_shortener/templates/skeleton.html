@@ -1,0 +1,30 @@
+{% block document -%}
+<!DOCTYPE html>
+<html{% block html_attributes %} lang="ru"{% endblock %}>
+<head>
+{%- block head %}
+    {%- block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    {% endblock -%}
+    <title>{% block title %}{% block page_title %}{% endblock %} | {% block site_title %}{% endblock %}{{ config['SITE_TITLE'] }}{% endblock %}</title>
+    {%- block styles %}
+    <link type="image/x-icon" rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    {% endblock -%}
+    {%- block styles_inline %}{% endblock -%}
+    {%- block javascript_head %}{% endblock -%}
+{% endblock -%}
+</head>
+
+<body{% block body_attributes %}{% endblock %}>
+{%- block body %}
+    {%- block main %}{% endblock -%}
+    {%- block javascript %}{% endblock -%}
+    {%- block javascript_inline %}{% endblock -%}
+{% endblock -%}
+</body>
+</html>
+{%- endblock %}

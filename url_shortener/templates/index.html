@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <section class="form">
+        {% include "form.html" %}
+    </section>
+    <section class="grid">
+        <table>
+            <thead>
+                <tr>
+                    <th>Короткий URL</th>
+                    <th>Оригинальный URL</th>
+                    <th>Создан</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%- for url in urls %}
+                    <tr>
+                        <td>
+                            <a href="{{ url.short_url }}">{{ url.short_url }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ url.original_url }}">{{ url.original_url }}</a>
+                        </td>
+                        <td>{{ url.created }}</td>
+                    </tr>
+                {% endfor -%}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

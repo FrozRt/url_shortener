@@ -1,0 +1,16 @@
+<form action="{{ url_for('shorten_url') }}" method="post">
+    {{ form.hidden_tag() }}
+    {%- if form.original_url.errors %}
+        <ul>
+            {% for err in form.original_url.errors %}
+            <li>{{ err }}</li>
+            {% endfor %}
+        </ul>
+    {% endif -%}
+    <div class="input">
+        {{ form.original_url() }}
+    </div>
+    <div class="btn">
+        <input type="submit" value="Сократить">
+    </div>
+</form>
